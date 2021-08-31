@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <link rel="stylesheet" th:href="@{css/main.css}" type="text/css">
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__list_item"><a th:href="@{/}">Главная</a></li>
+                <li class="menu__list_item"><a th:href="@{/create}">Создать</a></li>
+                <li class="menu__list_item"><a th:href="@{/subscribe}">Подписки</a></li>
+                <li class="menu__list_item"><a th:href="@{/login}">Войти</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="body__list_posts">
+    <ul class="list_posts">
+        <th:each class="body__post" th:each="post : ${allPosts}">
+            <li th:utext="${post.getBody()}"></li>
+        </th:each>
+    </ul>
+</div>
+
+</body>
+</html>

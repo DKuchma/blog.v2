@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.needToLohIn {
+    margin-left: 5%;
+    margin-right: 5%;
+    color: green;
+}
+
+.create__post{
+    color: green;
+    font-size: 25px;
+    margin-left: 3%;
+}
+
+.create__post p{
+    color: grey;
+    font-size: 15px;
+}
+

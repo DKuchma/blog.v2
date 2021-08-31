@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <link rel="stylesheet" th:href="@{css/main.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/createPage.css}" type="text/css">
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__list_item"><a th:href="@{/}">Главная</a></li>
+                <li class="menu__list_item"><a th:href="@{/create}">Создать</a></li>
+                <li class="menu__list_item"><a th:href="@{/subscribe}">Подписки</a></li>
+                <li class="menu__list_item"><a th:href="@{/login}">Войти</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div sec:authorize="!isAuthenticated()">
+    <h1 class="needToLohIn">Что бы создать пост войдите в аккаунт или зарегестрируйтесь.</h1>
+</div>
+
+<div class="authorized" sec:authorize="isAuthenticated()">
+    <div class="create__post">
+        <div class="create__post_form">
+            <form name="create_post" th:action="@{/create}" th:method="POST" th:object="${post}">
+                <label for="title">Укажите заголовок поста</label>
+                <p class="clarification">Минимальная длина 10 символов, максимальная 100</p>
+                <input type="text" th:field="*{title}" id="title" maxlength="100" required placeholder="Заголовок"
+                       size="100">
+                <br>
+
+                <label for="body">Напишите пост</label>
+                <p class="clarification">Минимальная длина 100 символов, максимальная 5000</p>
+                <textarea th:field="*{body}" id="body" maxlength="5000" required placeholder="Введите текст"
+                          rows="5" cols="100" style="min-height:250px;"></textarea>
+                <br/>
+
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
